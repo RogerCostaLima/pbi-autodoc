@@ -326,11 +326,11 @@ elif page == "📄 Gerar Doc":
         for res in results:
             if res["ok"]:
                 summ = res["summary"]
+                ia_part = f" · IA {res['t_ai']:.1f}s" if res["t_ai"] else ""
                 st.markdown(
                     f'<div class="info-box">✅ <b>{res["file_name"]}</b> · '
                     f'Total: {res["t_total"]:.1f}s '
-                    f'(extração {res["t_extract"]:.1f}s'
-                    f'{f" · IA {res[\"t_ai\"]:.1f}s" if res["t_ai"] else ""}'
+                    f'(extração {res["t_extract"]:.1f}s{ia_part}'
                     f' · Word {res["t_doc"]:.1f}s) · '
                     f'{summ["tables"]} tabelas · {summ["measures"]} medidas</div>',
                     unsafe_allow_html=True,
